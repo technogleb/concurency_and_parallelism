@@ -1,6 +1,5 @@
 """
-Join method is used to block all threads but the one we call this method from.
-Run different main clauses below to try out different use cases.
+Join method is used to stop the execution of the thread we call this method from(usually main thred) until the thread we call this method to is finished.
 """
 
 import threading as th
