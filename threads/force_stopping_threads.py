@@ -27,8 +27,30 @@ class Job:
         self.task()
 
 
+class JobKillable(th.Thread):
+    def __init__(self, n, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.n = n
+        self._is_alive = True
+
+    def kill(self):
+        """Calling this method would kill the thread"""
+        self._is_alive = False
+
+    def run(self):
+        i = 0
+        while self._is_alive:
+            print(self.n - i - 1, 'left')
+            time.sleep(1)
+            i -= 1
+
+
 if __name__ == '__main__':
-    target = Job(n=10, sleep_time=1, name='left')
-    target.kill()
-    t = th.Thread(target=target)
+    # target = Job(n=10, sleep_time=1, name='left')
+    # t = th.Thread(target=target)
+    # t.start()
+    # target.kill()
+    t = JobKillable(n=100)
     t.start()
+    time.sleep(4)
+    # t.kill()
