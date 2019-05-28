@@ -7,6 +7,7 @@ import threading as th
 
 
 class Job:
+    """This is old example of how this wouldn't work"""
     def __init__(self, n, sleep_time, name):
         self._is_alive = True  # our flag
         self.n = n
@@ -28,6 +29,7 @@ class Job:
 
 
 class JobKillable(th.Thread):
+    """This is the right way to create stoppable threads"""
     def __init__(self, n, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.n = n
@@ -46,11 +48,14 @@ class JobKillable(th.Thread):
 
 
 if __name__ == '__main__':
-    # target = Job(n=10, sleep_time=1, name='left')
-    # t = th.Thread(target=target)
-    # t.start()
-    # target.kill()
+    # wouldn't work
+    target = Job(n=10, sleep_time=1, name='left')
+    t = th.Thread(target=target)
+    t.start()
+    target.kill()
+
+    # work
     t = JobKillable(n=100)
     t.start()
     time.sleep(4)
-    # t.kill()
+    t.kill()
