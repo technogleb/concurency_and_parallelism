@@ -16,6 +16,8 @@ class CountdownThread(th.Thread):
             print(self.n - i - 1, 'left')
             time.sleep(1)
 
+
 t = CountdownThread(3)
 
 t.start()
+

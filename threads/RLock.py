@@ -14,6 +14,7 @@ def lock_twice(locker=None):
     a += 2
     locker.release()
 
+
 if __name__ == '__main__':
     lock_twice(rlock)
     lock_twice(lock)  # freezes forever

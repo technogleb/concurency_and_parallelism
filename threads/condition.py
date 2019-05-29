@@ -33,4 +33,3 @@ class Consumer(th.Thread):
             self.condition.acquire()
             while True:
                 pass
-
