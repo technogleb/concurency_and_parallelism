@@ -1,5 +1,6 @@
 """
-Join method is used to stop the execution of the thread we call this method from(usually main thred) until the thread we call this method to is finished.
+Join method is used to stop the execution of the thread we call this method from(usually main thred)
+until the thread we call this method to is finished.
 """
 
 import threading as th
