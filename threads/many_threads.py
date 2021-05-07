@@ -9,6 +9,11 @@ def mapper(data):
     return data.upper()
 
 
+def hello(name):
+    print(f"hello from thread {name}!")
+
+
 with ThreadPoolExecutor(max_workers=3) as pool:
-    res = pool.map(mapper, some_dummy_data)
-    print(list(res))
+    # res = pool.map(mapper, some_dummy_data)
+    for name in ('a', 'b', 'c'):
+        pool.submit(hello, name)
